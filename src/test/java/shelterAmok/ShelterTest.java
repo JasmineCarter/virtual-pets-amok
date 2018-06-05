@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ShelterTest {
-	
+
 	private Shelter myShelter;
 	private Dog tanner;
 	private Cat sophie;
@@ -19,47 +19,53 @@ public class ShelterTest {
 
 	@Before
 	public void setUp() {
-		
+
 		myShelter = new Shelter();
-		tanner = new Dog("Tanner", 10, 10, 10, 10, 10, 10, "loves to walk"); 
-		sophie = new Cat("Sophie", 10, 10, 10, 10, 10, 10, "soft and cuddly"); 
-		cooper = new RoboDog("Cooper", 10, 10, 10, 10, "squeaky"); 
-		lily = new RoboCat("Lily", 10, 10, 10,10, "very high maintenance"); 
-	}
-	
-	@Test 
-	public void shouldBeAbleToAcceptANewPetIntoShelter() {
-		myShelter.accept(sophie);
-		Pet foundCat = myShelter.findPet(sophie.getName()); 
-		assertThat(foundCat, is(sophie));
-		
-		
-	}
-	
-	@Test
-	public void shouldBeAbleToAcceptTwoNewPetsIntoShelter() {
-		myShelter.accept(sophie);
-		myShelter.accept(cooper);
-		Pet foundCat = myShelter.findPet(sophie.getName()); 
-		Pet foundRoboDog = myShelter.findPet(cooper.getName()); 
-		assertThat(foundCat, is(sophie)); 
-		assertThat(foundRoboDog, is(cooper)); 
+		tanner = new Dog("Tanner", 10, 10, 10, 10, 10, 10, "loves to walk");
+		sophie = new Cat("Sophie", 10, 10, 10, 10, 10, 10, "soft and cuddly");
+		cooper = new RoboDog("Cooper", 10, 10, 10, 10, "squeaky");
+		lily = new RoboCat("Lily", 10, 10, 10, 10, "very high maintenance");
 	}
 
-	@Test 
-	public void shouldBeAbleToAcceptACollectionOfPetsIntoShelter() {
+	@Test
+	public void shouldBeAbleToAddPet() {
 		myShelter.accept(sophie); 
-		myShelter.accept(cooper); 
-		Collection<Pet> acceptedPets = myShelter.getAllPets(); 
-		
+		Pet foundPet = myShelter.findPet(sophie.getName()); 
+		assertThat(foundPet, is(sophie)); 
 	}
 	
+
+	@Test
+	public void shouldBeAbleToAcceptMultiplePetsIntoShelter() {
+		myShelter.accept(sophie);
+		myShelter.accept(tanner);
+		myShelter.accept(cooper);
+		myShelter.accept(lily);
+		Pet foundCat = myShelter.findPet(sophie.getName());
+		Pet foundDog = myShelter.findPet(tanner.getName());
+		Pet foundRoboDog = myShelter.findPet(cooper.getName());
+		Pet foundRoboCat = myShelter.findPet(lily.getName());
+		assertThat(foundCat, is(sophie));
+		assertThat(foundDog, is(tanner));
+		assertThat(foundRoboDog, is(cooper));
+		assertThat(foundRoboCat, is(lily));
+
+	}
+
+	@Test
+	public void shouldBeAbleToAcceptACollectionOfPetsIntoShelter() {
+		myShelter.accept(sophie);
+		myShelter.accept(cooper);
+		Collection<Pet> acceptedPets = myShelter.getAllPets();
+
+	}
+
 	@Test
 	public void shouldBeAbleToAdoptAPetFromShelter() {
 		myShelter.accept(sophie);
 		myShelter.accept(cooper);
-		myShelter.adopt(tanner); 
-		Collection<Pet> acceptedPets= myShelter.getAllPets(); 
-		assertThat(acceptedPets, containsInAnyOrder(sophie)); 
+		myShelter.adopt(tanner);
+		Collection<Pet> acceptedPets = myShelter.getAllPets();
+		assertThat(acceptedPets, containsInAnyOrder(tanner));
 	}
 }
