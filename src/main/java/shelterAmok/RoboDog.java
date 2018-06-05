@@ -18,5 +18,4 @@ public class RoboDog extends RoboticPet implements WalkDogs {
 	public void walk() {
 		happiness += 5;
 	}
-
 }

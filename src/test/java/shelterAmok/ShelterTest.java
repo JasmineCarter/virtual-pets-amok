@@ -2,6 +2,7 @@ package shelterAmok;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
@@ -82,11 +83,40 @@ public class ShelterTest {
 		assertThat(acceptedPets, containsInAnyOrder(sophie,cooper)); 
 	}
 	
+	@Test
+	public void shouldBeAbleToFeedAllOrganicPets() {
+		myShelter.accept(tanner); 
+		myShelter.accept(sophie); 
+		myShelter.feedOrganic(); 
+		int check = tanner.getHunger(); 
+		assertEquals(5,check); 
+		check = sophie.getHunger(); 
+		assertEquals(5, check); 
+	}
 	
 	
+	@Test
+	public void shouldBeAbleToWaterAllOrganicPets() {
+		myShelter.accept(tanner); 
+		myShelter.accept(sophie); 
+		myShelter.waterOrganic(); 
+		int check = tanner.getThirst(); 
+		assertEquals(5,check); 
+		check = sophie.getThirst(); 
+		assertEquals(5, check); 
+	}
 	
 	
-	
+	@Test
+	public void shouldBeAbleToOilAllRoboticPets() {
+		myShelter.accept(cooper); 
+		myShelter.accept(lily); 
+		myShelter.oilRobotic(); 
+		int check = cooper.getOilLevel(); 
+		assertEquals(15,check); 
+		check = lily.getOilLevel(); 
+		assertEquals(15, check); 
+	}
 	
 	
 	
