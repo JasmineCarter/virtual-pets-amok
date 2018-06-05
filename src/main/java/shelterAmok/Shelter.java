@@ -51,5 +51,15 @@ public class Shelter {
 		
 	}
 
+	public void tick() {
+		for(Pet pet : pets.values()) {
+			if (pet instanceof RoboticPet) {
+				((OrganicPet) pet).tick(); 
+			}else {
+				((RoboticPet)pet).tick(); 
+			}
+	
+		}
+	}
 	
 }

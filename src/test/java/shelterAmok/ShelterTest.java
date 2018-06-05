@@ -30,11 +30,10 @@ public class ShelterTest {
 
 	@Test
 	public void shouldBeAbleToAddPet() {
-		myShelter.accept(sophie); 
-		Pet foundPet = myShelter.findPet(sophie.getName()); 
-		assertThat(foundPet, is(sophie)); 
+		myShelter.accept(sophie);
+		Pet foundPet = myShelter.findPet(sophie.getName());
+		assertThat(foundPet, is(sophie));
 	}
-	
 
 	@Test
 	public void shouldBeAbleToAcceptMultiplePetsIntoShelter() {
@@ -53,13 +52,13 @@ public class ShelterTest {
 
 	}
 
-/*	@Test
-	public void shouldBeAbleToAcceptACollectionOfPetsIntoShelter() {
-		myShelter.accept(sophie);
-		myShelter.accept(cooper);
-		Collection<Pet> acceptedPets = myShelter.getAllPets();
-
-	}*/
+	/*
+	 * @Test public void shouldBeAbleToAcceptACollectionOfPetsIntoShelter() {
+	 * myShelter.accept(sophie); myShelter.accept(cooper); Collection<Pet>
+	 * acceptedPets = myShelter.getAllPets();
+	 * 
+	 * }
+	 */
 
 	@Test
 	public void shouldBeAbleToAdoptAPetFromShelter() {
@@ -69,56 +68,75 @@ public class ShelterTest {
 		Collection<Pet> acceptedPets = myShelter.getAllPets();
 		assertThat(acceptedPets, containsInAnyOrder(sophie));
 	}
-	
-	
+
 	@Test
 	public void shouldBeAbleToAdoptMultiplePetsFromShelter() {
-		myShelter.accept(sophie); 
+		myShelter.accept(sophie);
 		myShelter.accept(cooper);
 		myShelter.accept(lily);
-		myShelter.accept(tanner); 
+		myShelter.accept(tanner);
 		myShelter.adopt(tanner);
 		myShelter.adopt(lily);
-		Collection<Pet> acceptedPets = myShelter.getAllPets(); 
-		assertThat(acceptedPets, containsInAnyOrder(sophie,cooper)); 
+		Collection<Pet> acceptedPets = myShelter.getAllPets();
+		assertThat(acceptedPets, containsInAnyOrder(sophie, cooper));
 	}
-	
+
 	@Test
 	public void shouldBeAbleToFeedAllOrganicPets() {
-		myShelter.accept(tanner); 
-		myShelter.accept(sophie); 
-		myShelter.feedOrganic(); 
-		int check = tanner.getHunger(); 
-		assertEquals(5,check); 
-		check = sophie.getHunger(); 
-		assertEquals(5, check); 
+		myShelter.accept(tanner);
+		myShelter.accept(sophie);
+		myShelter.feedOrganic();
+		int check = tanner.getHunger();
+		assertEquals(5, check);
+		check = sophie.getHunger();
+		assertEquals(5, check);
 	}
-	
-	
+
 	@Test
 	public void shouldBeAbleToWaterAllOrganicPets() {
-		myShelter.accept(tanner); 
-		myShelter.accept(sophie); 
-		myShelter.waterOrganic(); 
-		int check = tanner.getThirst(); 
-		assertEquals(5,check); 
-		check = sophie.getThirst(); 
-		assertEquals(5, check); 
+		myShelter.accept(tanner);
+		myShelter.accept(sophie);
+		myShelter.waterOrganic();
+		int check = tanner.getThirst();
+		assertEquals(5, check);
+		check = sophie.getThirst();
+		assertEquals(5, check);
 	}
-	
-	
+
 	@Test
 	public void shouldBeAbleToOilAllRoboticPets() {
-		myShelter.accept(cooper); 
-		myShelter.accept(lily); 
-		myShelter.oilRobotic(); 
-		int check = cooper.getOilLevel(); 
-		assertEquals(15,check); 
-		check = lily.getOilLevel(); 
-		assertEquals(15, check); 
+		myShelter.accept(cooper);
+		myShelter.accept(lily);
+		myShelter.oilRobotic();
+		int check = cooper.getOilLevel();
+		assertEquals(15, check);
+		check = lily.getOilLevel();
+		assertEquals(15, check);
 	}
-	
-	
-	
-	
+
+	@Test
+	public void shouldBeAbleToIncreaseHungerThirstBoredomWasteWithTickForOrganicPets() {
+		myShelter.accept(tanner);
+		myShelter.accept(sophie);
+		myShelter.tick();
+		int check = tanner.getHunger();
+		assertEquals(15, check);
+		check = sophie.getThirst();
+		assertEquals(15, check);
+		check = sophie.getBoredom();
+		assertEquals(15, check);
+		check = tanner.getWaste();
+		assertEquals(15, check);
+
+	}
+	@Test
+	public void shouldBeAbleToDecreaseOilLevelWithTickInRoboPets() {
+		myShelter.accept(lily);
+		myShelter.accept(cooper);
+		myShelter.tick(); 
+		int check = lily.getOilLevel(); 
+		assertEquals(5, check); 
+		check = cooper.getOilLevel(); 
+		assertEquals(5, check); 
+	}
 }
