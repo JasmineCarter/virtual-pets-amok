@@ -52,20 +52,43 @@ public class ShelterTest {
 
 	}
 
-	@Test
+/*	@Test
 	public void shouldBeAbleToAcceptACollectionOfPetsIntoShelter() {
 		myShelter.accept(sophie);
 		myShelter.accept(cooper);
 		Collection<Pet> acceptedPets = myShelter.getAllPets();
 
-	}
+	}*/
 
 	@Test
 	public void shouldBeAbleToAdoptAPetFromShelter() {
 		myShelter.accept(sophie);
 		myShelter.accept(cooper);
-		myShelter.adopt(tanner);
+		myShelter.adopt(cooper);
 		Collection<Pet> acceptedPets = myShelter.getAllPets();
-		assertThat(acceptedPets, containsInAnyOrder(tanner));
+		assertThat(acceptedPets, containsInAnyOrder(sophie));
 	}
+	
+	
+	@Test
+	public void shouldBeAbleToAdoptMultiplePetsFromShelter() {
+		myShelter.accept(sophie); 
+		myShelter.accept(cooper);
+		myShelter.accept(lily);
+		myShelter.accept(tanner); 
+		myShelter.adopt(tanner);
+		myShelter.adopt(lily);
+		Collection<Pet> acceptedPets = myShelter.getAllPets(); 
+		assertThat(acceptedPets, containsInAnyOrder(sophie,cooper)); 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
