@@ -140,9 +140,9 @@ public class ShelterAmokApp {
 				while (!choice.equals("Back to main menu")); 
 				
 			
+			
 	
-	
-		if (choice.equalsIgnoreCase("7")) {
+			}if (choice.equalsIgnoreCase("7")) {
 			 myShelter.oilRobotic();
 			 System.out.println("No more squeaky pets!");
 	}
@@ -154,10 +154,12 @@ public class ShelterAmokApp {
 		System.out.println("Our pets stats are currently at : ");
 		myShelter.showAllPets();
 			
-			}
-			while(!choice.equals("exit"));
+			
+			}while(!choice.equals("exit"));
+		
 
 		input.close(); 
 		
+		
 		}
-		}
+}
