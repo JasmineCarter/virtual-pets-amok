@@ -64,7 +64,7 @@ public class Shelter {
 
 	public void showAllPets() {
 		for (Pet pets : pets.values()) {
-			System.out.println("Name: " + pets.getName() + "description: " + pets.getDescription());
+			System.out.println("Name: " + pets.getName() + " description: " + pets.getDescription());
 
 		}
 	}
@@ -114,4 +114,17 @@ public class Shelter {
 			pets.play();
 		}
 	}
-}
+
+	public void walkDogs() {
+		
+			for(Pet pets : pets.values())
+			{
+				if(pets instanceof WalkDogs)
+				{
+					((WalkDogs) pets).walk();
+				}
+			}
+		}
+		
+	}
+

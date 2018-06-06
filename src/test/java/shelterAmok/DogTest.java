@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class DogTest {
 
-	Dog anyDog = new Dog("name", 10, 10, 10, 10, 10, 10, "description");
+	Dog anyDog = new Dog("name", 10, 10, 10, 10, 10, 10, " description");
 
 	@Test
 	public void shouldReturnAllDogProperties() {
