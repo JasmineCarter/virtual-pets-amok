@@ -21,4 +21,13 @@ public abstract class RoboticPet extends Pet {
 		boredom -= 5;
 		this.reduceOilLevel(); 
 	}
+	
+	public void tick() {
+		oilLevel -= 5; 
+	}
+	public void displayStats()
+	{
+		System.out.println("Name: " + name + " Oil Level : " + oilLevel + " " + " Boredom: " + 
+		boredom + " " + " Health: " + health + " " + " Happiness: " + happiness);
+	}
 }

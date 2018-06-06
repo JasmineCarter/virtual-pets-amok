@@ -139,4 +139,6 @@ public class ShelterTest {
 		check = cooper.getOilLevel(); 
 		assertEquals(5, check); 
 	}
+	
+	
 }

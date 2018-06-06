@@ -25,8 +25,8 @@ public class Shelter {
 	}
 
 	public void feedOrganic() {
-		for (Pet pet : pets.values()) {
-			if (pet instanceof OrganicPet) {
+		for (Pet pet : pets.values()) { // all pets
+			if (pet instanceof OrganicPet) { // check for organic pets - cast pet so we can feed
 				((OrganicPet) pet).feed();
 			}
 		}
@@ -36,30 +36,82 @@ public class Shelter {
 	public void waterOrganic() {
 		for (Pet pet : pets.values()) {
 			if (pet instanceof OrganicPet) {
-				((OrganicPet)pet).water(); 
+				((OrganicPet) pet).water();
 			}
 		}
-		
+
 	}
 
 	public void oilRobotic() {
 		for (Pet pet : pets.values()) {
 			if (pet instanceof RoboticPet) {
-				((RoboticPet)pet).increaseOilLevel(); 
+				((RoboticPet) pet).increaseOilLevel();
 			}
 		}
-		
+
 	}
 
 	public void tick() {
-		for(Pet pet : pets.values()) {
+		for (Pet pet : pets.values()) {
 			if (pet instanceof RoboticPet) {
-				((OrganicPet) pet).tick(); 
-			}else {
-				((RoboticPet)pet).tick(); 
+				((OrganicPet) pet).tick();
+			} else {
+				((RoboticPet) pet).tick();
 			}
-	
+
 		}
 	}
-	
+
+	public void showAllPets() {
+		for (Pet pets : pets.values()) {
+			System.out.println("Name: " + pets.getName() + "description: " + pets.getDescription());
+
+		}
+	}
+
+	public void displayPetStats() {
+		for (Pet pets : pets.values()) {
+			pets.displayStats();
+		}
+	}
+
+	public void organicPetStats() {
+		for (Pet pets : pets.values()) {
+			if (pets instanceof OrganicPet) {
+				pets.displayStats();
+			}
+
+		}
+	}
+
+	public void roboticPetStats() {
+		for (Pet pets : pets.values()) {
+			if (pets instanceof RoboticPet) {
+				pets.displayStats();
+			}
+		}
+	}
+
+	public void cleanAllDogCages() {
+		for (Pet pets : pets.values()) {
+			if (pets instanceof Dog) {
+				((OrganicPet) pets).clean();
+
+			}
+		}
+	}
+
+	public void emptyAllLitterBoxes() {
+		for (Pet pets : pets.values()) {
+			if (pets instanceof Cat) {
+				((OrganicPet) pets).clean();
+			}
+		}
+	}
+
+	public void playWithAllPets() {
+		for (Pet pets : pets.values()) {
+			pets.play();
+		}
+	}
 }

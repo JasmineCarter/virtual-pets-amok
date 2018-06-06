@@ -38,4 +38,7 @@ public abstract class Pet {
 		health -= 5;
 	}
 
+	public abstract void displayStats();
+
+	public abstract void tick();
 }

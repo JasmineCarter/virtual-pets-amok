@@ -41,4 +41,18 @@ public abstract class OrganicPet extends Pet {
 		boredom -= 5;
 	}
 
+	public void tick() {
+		hunger += 5; 
+		thirst += 5; 
+		boredom += 5; 
+		waste += 5; 
+}
+
+	
+	public void displayStats()
+	{
+		System.out.println("Name: " + name + " Hunger: " + hunger + " " +
+				" Thirst: " + thirst + " " + " Boredom: " + boredom + " " + " Waste: " + 
+				waste + " " + " Health: " + health + " " + " Happiness: " + happiness);
+	}
 }
